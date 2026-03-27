@@ -119,6 +119,21 @@ architecture arch_imp of full_radio_v1_0_S00_AXI is
 	signal byte_index	: integer;
 	signal aw_en	: std_logic;
 
+-- Caleb here, these are my additions
+	COMPONENT radio_bd
+  		PORT (
+    	dds_fake_adc_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    	dds_fake_adc_tvalid : IN STD_LOGIC;
+    	dds_tuner_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    	dds_tuner_tvalid : IN STD_LOGIC;
+    	sys_clk : IN STD_LOGIC;
+    	resetn : IN STD_LOGIC;
+    	real_data : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    	imag_data : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    	tdata_valid : OUT STD_LOGIC_VECTOR(0 DOWNTO 0)
+  		);
+	END COMPONENT;
+
 COMPONENT dds_compiler_0
   PORT (
     aclk : IN STD_LOGIC;
@@ -126,9 +141,19 @@ COMPONENT dds_compiler_0
     s_axis_phase_tvalid : IN STD_LOGIC;
     s_axis_phase_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     m_axis_data_tvalid : OUT STD_LOGIC;
-    m_axis_data_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+    m_axis_data_tdata : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
   );
     END COMPONENT;
+
+	signal fake_adc_data_real : std_logic_vector(15 downto 0); 
+	signal fake_adc_data_imag : std_logic_vector(15 downto 0); 
+	signal fake_adc_data_total : std_logic_vector(31 downto 0); 
+	signal fake_adc_valid : std_logic; 
+	-- signal final_data : std_logic_vector(31 downto 0);
+	signal real_out : std_logic_vector(15 downto 0);
+	signal imag_out : std_logic_vector(15 downto 0);
+
+-- end of caleb's additions :)
 
 begin
 	-- I/O Connections assignments
@@ -367,7 +392,7 @@ begin
 	      when b"00" =>
 	        reg_data_out <= slv_reg0;
 	      when b"01" =>
-	        reg_data_out <= x"DEADBEEF";
+	        reg_data_out <= x"DEADBEEB";
 	      when b"10" =>
 	        reg_data_out <= slv_reg2;
 	      when b"11" =>
@@ -395,20 +420,37 @@ begin
 	  end if;
 	end process;
 
-
 	-- Add user logic here
 
-your_instance_name : dds_compiler_0
+given_fake_adc_dds : dds_compiler_0
   PORT MAP (
     aclk => s_axi_aclk,
     aresetn => '1',
     s_axis_phase_tvalid => '1',
     s_axis_phase_tdata => slv_reg0,
-    m_axis_data_tvalid => m_axis_tvalid,
-    m_axis_data_tdata => m_axis_tdata
+    -- m_axis_data_tvalid => m_axis_tvalid,
+    -- m_axis_data_tdata => m_axis_tdata
+    m_axis_data_tvalid => fake_adc_valid,
+    m_axis_data_tdata => fake_adc_data_real
   );
 
+my_full_radio_bd : radio_bd
+  PORT MAP (
+    dds_fake_adc_tdata => fake_adc_data_total,
+    dds_fake_adc_tvalid => fake_adc_valid,
+    dds_tuner_tdata => slv_reg1,
+    dds_tuner_tvalid => '1',
+    sys_clk => s_axi_aclk,
+    resetn => '1',
+    real_data => real_out,
+    imag_data => imag_out,
+    tdata_valid(0) => m_axis_tvalid
+  );
 
+	fake_adc_data_imag <= (others => '0');
+	fake_adc_data_total <= fake_adc_data_real & fake_adc_data_imag;
+	m_axis_tdata <= real_out & imag_out;
+	-- m_axis_tvalid <= '1';
 	-- User logic ends
 
 end arch_imp;

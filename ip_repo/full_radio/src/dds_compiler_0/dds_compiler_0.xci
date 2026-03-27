@@ -2,10 +2,9 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "dds_compiler_0",
-    "cell_name": "full_radio_v1_0_S00_AXI_inst/your_instance_name",
     "component_reference": "xilinx.com:ip:dds_compiler:6.0",
-    "ip_revision": "26",
-    "gen_directory": "../../../../../../../../users/wenstds1/class/dellater/vivado/radio_periph_lab.tmp/full_radio_v1_0_project/full_radio_v1_0_project.gen/sources_1/ip/dds_compiler_0",
+    "ip_revision": "28",
+    "gen_directory": "../../../../vivado/radio_periph_lab.tmp/full_radio_v1_0_project/full_radio_v1_0_project.gen/sources_1/ip/dds_compiler_0",
     "parameters": {
       "component_parameters": {
         "Component_Name": [ { "value": "dds_compiler_0", "resolve_type": "user", "usage": "all" } ],
@@ -24,7 +23,7 @@
         "Phase_Increment": [ { "value": "Streaming", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "Resync": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "Phase_offset": [ { "value": "None", "resolve_type": "user", "usage": "all" } ],
-        "Output_Selection": [ { "value": "Sine_and_Cosine", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
+        "Output_Selection": [ { "value": "Cosine", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "Negative_Sine": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "Negative_Cosine": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "Amplitude_Mode": [ { "value": "Unit_Circle", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
@@ -127,7 +126,7 @@
         "C_NEGATIVE_COSINE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_NEGATIVE_SINE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_NOISE_SHAPING": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_OUTPUTS_REQUIRED": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_OUTPUTS_REQUIRED": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_OUTPUT_FORM": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_OUTPUT_TYPE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_OUTPUT_WIDTH": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -153,7 +152,7 @@
         "C_S_CONFIG_SYNC_MODE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_S_CONFIG_TDATA_WIDTH": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_HAS_M_DATA": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_M_DATA_TDATA_WIDTH": [ { "value": "32", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_M_DATA_TDATA_WIDTH": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_M_DATA_HAS_TUSER": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_M_DATA_TUSER_WIDTH": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_HAS_M_PHASE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -164,26 +163,26 @@
         "C_CHAN_WIDTH": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
-        "ARCHITECTURE": [ { "value": "zynq" } ],
-        "BASE_BOARD_PART": [ { "value": "" } ],
-        "BOARD_CONNECTIONS": [ { "value": "" } ],
-        "DEVICE": [ { "value": "xc7z020" } ],
-        "PACKAGE": [ { "value": "clg400" } ],
-        "PREFHDL": [ { "value": "VHDL" } ],
-        "SILICON_REVISION": [ { "value": "" } ],
-        "SIMULATOR_LANGUAGE": [ { "value": "MIXED" } ],
-        "SPEEDGRADE": [ { "value": "-1" } ],
-        "STATIC_POWER": [ { "value": "" } ],
-        "TEMPERATURE_GRADE": [ { "value": "" } ]
+        "ARCHITECTURE": [ { "value": "zynq", "resolve_type": "generated", "usage": "all" } ],
+        "BASE_BOARD_PART": [ { "value": "", "resolve_type": "generated", "usage": "all" } ],
+        "BOARD_CONNECTIONS": [ { "value": "", "resolve_type": "generated", "usage": "all" } ],
+        "DEVICE": [ { "value": "xc7z020", "resolve_type": "generated", "usage": "all" } ],
+        "PACKAGE": [ { "value": "clg400", "resolve_type": "generated", "usage": "all" } ],
+        "PREFHDL": [ { "value": "VHDL", "resolve_type": "generated", "usage": "all" } ],
+        "SILICON_REVISION": [ { "value": "", "resolve_type": "generated", "usage": "all" } ],
+        "SIMULATOR_LANGUAGE": [ { "value": "MIXED", "resolve_type": "generated", "usage": "all" } ],
+        "SPEEDGRADE": [ { "value": "-1", "resolve_type": "generated", "usage": "all" } ],
+        "STATIC_POWER": [ { "value": "", "resolve_type": "generated", "usage": "all" } ],
+        "TEMPERATURE_GRADE": [ { "value": "", "resolve_type": "generated", "usage": "all" } ]
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Flow" } ],
-        "IPREVISION": [ { "value": "26" } ],
+        "IPREVISION": [ { "value": "28" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../../../users/wenstds1/class/dellater/vivado/radio_periph_lab.tmp/full_radio_v1_0_project/full_radio_v1_0_project.gen/sources_1/ip/dds_compiler_0" } ],
+        "OUTPUTDIR": [ { "value": "../../../../vivado/radio_periph_lab.tmp/full_radio_v1_0_project/full_radio_v1_0_project.gen/sources_1/ip/dds_compiler_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "." } ],
-        "SWVERSION": [ { "value": "2024.2" } ],
+        "SWVERSION": [ { "value": "2025.2" } ],
         "SYNTHESISFLOW": [ { "value": "GLOBAL" } ]
       }
     },
@@ -194,7 +193,7 @@
         "s_axis_phase_tvalid": [ { "direction": "in", "driver_value": "0x0" } ],
         "s_axis_phase_tdata": [ { "direction": "in", "size_left": "31", "size_right": "0", "driver_value": "0" } ],
         "m_axis_data_tvalid": [ { "direction": "out", "driver_value": "0x0" } ],
-        "m_axis_data_tdata": [ { "direction": "out", "size_left": "31", "size_right": "0", "driver_value": "0" } ]
+        "m_axis_data_tdata": [ { "direction": "out", "size_left": "15", "size_right": "0", "driver_value": "0" } ]
       },
       "interfaces": {
         "event_pinc_invalid_intf": {
@@ -337,7 +336,7 @@
           "abstraction_type": "xilinx.com:interface:axis_rtl:1.0",
           "mode": "master",
           "parameters": {
-            "TDATA_NUM_BYTES": [ { "value": "4", "value_src": "auto", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "TDATA_NUM_BYTES": [ { "value": "2", "value_src": "auto", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TDEST_WIDTH": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TID_WIDTH": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TUSER_WIDTH": [ { "value": "0", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
@@ -358,5 +357,6 @@
         }
       }
     }
-  }
+  },
+  "checksum": "ffcf8c57"
 }
