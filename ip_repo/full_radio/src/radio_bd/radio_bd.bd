@@ -6,7 +6,7 @@
       "gen_directory": "../../../../full_radio_v1_0_project.gen/sources_1/bd/radio_bd",
       "name": "radio_bd",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
-      "synth_flow_mode": "Hierarchical",
+      "synth_flow_mode": "None",
       "tool_version": "2025.2",
       "validated": "true"
     },
@@ -18,14 +18,8 @@
       "imag_filter_1": "",
       "real_filter_2": "",
       "imag_filter_2": "",
-      "ilconstant_0": "",
-      "imag_final": "",
       "slice_imag": "",
-      "slice_imag2": "",
       "slice_real": "",
-      "slice_real2": "",
-      "ilconstant_1": "",
-      "real_final": "",
       "ilvector_logic_0": "",
       "dds_compiler_1": ""
     },
@@ -219,7 +213,7 @@
         "parameters": {
           "PortWidth": {
             "value": "16",
-            "value_src": "ip_prop"
+            "value_src": "user_prop"
           }
         }
       },
@@ -230,7 +224,7 @@
         "parameters": {
           "PortWidth": {
             "value": "16",
-            "value_src": "ip_prop"
+            "value_src": "user_prop"
           }
         }
       },
@@ -254,21 +248,21 @@
       "cmpy_0": {
         "vlnv": "xilinx.com:ip:cmpy:6.0",
         "ip_revision": "27",
-        "xci_name": "radio_bd_cmpy_0_0",
-        "xci_path": "ip/radio_bd_cmpy_0_0/radio_bd_cmpy_0_0.xci",
+        "xci_name": "radio_bd_cmpy_0_1",
+        "xci_path": "ip/radio_bd_cmpy_0_1/radio_bd_cmpy_0_1.xci",
         "inst_hier_path": "cmpy_0",
         "has_run_ip_tcl": "true",
         "parameters": {
           "OutputWidth": {
-            "value": "16"
+            "value": "19"
           }
         }
       },
       "real_filter_1": {
         "vlnv": "xilinx.com:ip:fir_compiler:7.2",
         "ip_revision": "26",
-        "xci_name": "radio_bd_real_filter_1_0",
-        "xci_path": "ip/radio_bd_real_filter_1_0/radio_bd_real_filter_1_0.xci",
+        "xci_name": "radio_bd_real_filter_1_1",
+        "xci_path": "ip/radio_bd_real_filter_1_1/radio_bd_real_filter_1_1.xci",
         "inst_hier_path": "real_filter_1",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -359,10 +353,13 @@
         "vlnv": "xilinx.com:inline_hdl:ilslice:1.0",
         "parameters": {
           "DIN_FROM": {
-            "value": "31"
+            "value": "39"
           },
           "DIN_TO": {
-            "value": "16"
+            "value": "24"
+          },
+          "DIN_WIDTH": {
+            "value": "48"
           }
         }
       },
@@ -371,14 +368,20 @@
         "parameters": {
           "DIN_FROM": {
             "value": "15"
+          },
+          "DIN_TO": {
+            "value": "0"
+          },
+          "DIN_WIDTH": {
+            "value": "48"
           }
         }
       },
       "imag_filter_1": {
         "vlnv": "xilinx.com:ip:fir_compiler:7.2",
         "ip_revision": "26",
-        "xci_name": "radio_bd_imag_filter_1_0",
-        "xci_path": "ip/radio_bd_imag_filter_1_0/radio_bd_imag_filter_1_0.xci",
+        "xci_name": "radio_bd_imag_filter_1_1",
+        "xci_path": "ip/radio_bd_imag_filter_1_1/radio_bd_imag_filter_1_1.xci",
         "inst_hier_path": "imag_filter_1",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -468,8 +471,8 @@
       "real_filter_2": {
         "vlnv": "xilinx.com:ip:fir_compiler:7.2",
         "ip_revision": "26",
-        "xci_name": "radio_bd_real_filter_2_0",
-        "xci_path": "ip/radio_bd_real_filter_2_0/radio_bd_real_filter_2_0.xci",
+        "xci_name": "radio_bd_real_filter_2_1",
+        "xci_path": "ip/radio_bd_real_filter_2_1/radio_bd_real_filter_2_1.xci",
         "inst_hier_path": "real_filter_2",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -540,7 +543,7 @@
             "value": "Truncate_LSBs"
           },
           "Output_Width": {
-            "value": "16"
+            "value": "18"
           },
           "Quantization": {
             "value": "Quantize_Only"
@@ -565,8 +568,8 @@
       "imag_filter_2": {
         "vlnv": "xilinx.com:ip:fir_compiler:7.2",
         "ip_revision": "26",
-        "xci_name": "radio_bd_imag_filter_2_0",
-        "xci_path": "ip/radio_bd_imag_filter_2_0/radio_bd_imag_filter_2_0.xci",
+        "xci_name": "radio_bd_imag_filter_2_1",
+        "xci_path": "ip/radio_bd_imag_filter_2_1/radio_bd_imag_filter_2_1.xci",
         "inst_hier_path": "imag_filter_2",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -637,7 +640,7 @@
             "value": "Truncate_LSBs"
           },
           "Output_Width": {
-            "value": "16"
+            "value": "18"
           },
           "Quantization": {
             "value": "Quantize_Only"
@@ -659,52 +662,16 @@
           }
         }
       },
-      "ilconstant_0": {
-        "vlnv": "xilinx.com:inline_hdl:ilconstant:1.0",
-        "parameters": {
-          "CONST_VAL": {
-            "value": "0"
-          },
-          "CONST_WIDTH": {
-            "value": "6"
-          }
-        }
-      },
-      "imag_final": {
-        "vlnv": "xilinx.com:inline_hdl:ilconcat:1.0",
-        "parameters": {
-          "IN0_WIDTH": {
-            "value": "6"
-          },
-          "IN1_WIDTH": {
-            "value": "9"
-          },
-          "IN2_WIDTH": {
-            "value": "1"
-          },
-          "NUM_PORTS": {
-            "value": "3"
-          }
-        }
-      },
       "slice_imag": {
         "vlnv": "xilinx.com:inline_hdl:ilslice:1.0",
         "parameters": {
           "DIN_FROM": {
-            "value": "8"
+            "value": "15"
           },
           "DIN_WIDTH": {
-            "value": "16"
+            "value": "24"
           },
           "DOUT_WIDTH": {
-            "value": "9"
-          }
-        }
-      },
-      "slice_imag2": {
-        "vlnv": "xilinx.com:inline_hdl:ilslice:1.0",
-        "parameters": {
-          "DIN_WIDTH": {
             "value": "16"
           }
         }
@@ -713,49 +680,13 @@
         "vlnv": "xilinx.com:inline_hdl:ilslice:1.0",
         "parameters": {
           "DIN_FROM": {
-            "value": "8"
+            "value": "15"
           },
           "DIN_WIDTH": {
-            "value": "16"
+            "value": "24"
           },
           "DOUT_WIDTH": {
-            "value": "9"
-          }
-        }
-      },
-      "slice_real2": {
-        "vlnv": "xilinx.com:inline_hdl:ilslice:1.0",
-        "parameters": {
-          "DIN_WIDTH": {
             "value": "16"
-          }
-        }
-      },
-      "ilconstant_1": {
-        "vlnv": "xilinx.com:inline_hdl:ilconstant:1.0",
-        "parameters": {
-          "CONST_VAL": {
-            "value": "0"
-          },
-          "CONST_WIDTH": {
-            "value": "6"
-          }
-        }
-      },
-      "real_final": {
-        "vlnv": "xilinx.com:inline_hdl:ilconcat:1.0",
-        "parameters": {
-          "IN0_WIDTH": {
-            "value": "6"
-          },
-          "IN1_WIDTH": {
-            "value": "9"
-          },
-          "IN2_WIDTH": {
-            "value": "1"
-          },
-          "NUM_PORTS": {
-            "value": "3"
           }
         }
       },
@@ -770,8 +701,8 @@
       "dds_compiler_1": {
         "vlnv": "xilinx.com:ip:dds_compiler:6.0",
         "ip_revision": "28",
-        "xci_name": "radio_bd_dds_compiler_1_0",
-        "xci_path": "ip/radio_bd_dds_compiler_1_0/radio_bd_dds_compiler_1_0.xci",
+        "xci_name": "radio_bd_dds_compiler_1_1",
+        "xci_path": "ip/radio_bd_dds_compiler_1_1/radio_bd_dds_compiler_1_1.xci",
         "inst_hier_path": "dds_compiler_1",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -894,18 +825,6 @@
           "imag_filter_1/s_axis_data_tvalid"
         ]
       },
-      "ilconstant_0_dout": {
-        "ports": [
-          "ilconstant_0/dout",
-          "imag_final/In0"
-        ]
-      },
-      "ilconstant_1_dout": {
-        "ports": [
-          "ilconstant_1/dout",
-          "real_final/In0"
-        ]
-      },
       "ilvector_logic_0_Res": {
         "ports": [
           "ilvector_logic_0/Res",
@@ -915,20 +834,13 @@
       "imag_filter_2_m_axis_data_tdata": {
         "ports": [
           "imag_filter_2/m_axis_data_tdata",
-          "slice_imag/Din",
-          "slice_imag2/Din"
+          "slice_imag/Din"
         ]
       },
       "imag_filter_2_m_axis_data_tvalid": {
         "ports": [
           "imag_filter_2/m_axis_data_tvalid",
           "ilvector_logic_0/Op2"
-        ]
-      },
-      "imag_final_dout": {
-        "ports": [
-          "imag_final/dout",
-          "imag_data"
         ]
       },
       "imag_slice_Dout": {
@@ -940,7 +852,6 @@
       "real_filter_2_m_axis_data_tdata": {
         "ports": [
           "real_filter_2/m_axis_data_tdata",
-          "slice_real2/Din",
           "slice_real/Din"
         ]
       },
@@ -950,40 +861,22 @@
           "ilvector_logic_0/Op1"
         ]
       },
-      "real_final_dout": {
-        "ports": [
-          "real_final/dout",
-          "real_data"
-        ]
-      },
       "real_slice_Dout": {
         "ports": [
           "real_slice/Dout",
           "real_filter_1/s_axis_data_tdata"
         ]
       },
-      "slice_imag2_Dout": {
-        "ports": [
-          "slice_imag2/Dout",
-          "imag_final/In2"
-        ]
-      },
       "slice_imag_Dout": {
         "ports": [
           "slice_imag/Dout",
-          "imag_final/In1"
-        ]
-      },
-      "slice_real2_Dout": {
-        "ports": [
-          "slice_real2/Dout",
-          "real_final/In2"
+          "imag_data"
         ]
       },
       "slice_real_Dout": {
         "ports": [
           "slice_real/Dout",
-          "real_final/In1"
+          "real_data"
         ]
       }
     },

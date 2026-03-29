@@ -392,7 +392,7 @@ begin
 	      when b"00" =>
 	        reg_data_out <= slv_reg0;
 	      when b"01" =>
-	        reg_data_out <= x"DEADBEEB";
+	        reg_data_out <= x"DEADBEEC";
 	      when b"10" =>
 	        reg_data_out <= slv_reg2;
 	      when b"11" =>

@@ -2,6 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "dds_compiler_0",
+    "cell_name": "full_radio_v1_0_S00_AXI_inst/given_fake_adc_dds",
     "component_reference": "xilinx.com:ip:dds_compiler:6.0",
     "ip_revision": "28",
     "gen_directory": "../../../../vivado/radio_periph_lab.tmp/full_radio_v1_0_project/full_radio_v1_0_project.gen/sources_1/ip/dds_compiler_0",
@@ -358,5 +359,5 @@
       }
     }
   },
-  "checksum": "ffcf8c57"
+  "checksum": "fee3c570"
 }

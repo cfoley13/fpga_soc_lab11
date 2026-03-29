@@ -1,14 +1,14 @@
 {
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
-    "xci_name": "radio_bd_real_filter_2_0",
+    "xci_name": "radio_bd_real_filter_2_1",
     "cell_name": "real_filter_2",
     "component_reference": "xilinx.com:ip:fir_compiler:7.2",
     "ip_revision": "26",
-    "gen_directory": "../../../../../../full_radio_v1_0_project.gen/sources_1/bd/radio_bd/ip/radio_bd_real_filter_2_0",
+    "gen_directory": "../../../../../../full_radio_v1_0_project.gen/sources_1/bd/radio_bd/ip/radio_bd_real_filter_2_1_1",
     "parameters": {
       "component_parameters": {
-        "Component_Name": [ { "value": "radio_bd_real_filter_2_0", "resolve_type": "user", "usage": "all" } ],
+        "Component_Name": [ { "value": "radio_bd_real_filter_2_1", "resolve_type": "user", "usage": "all" } ],
         "GUI_Behaviour": [ { "value": "Coregen", "resolve_type": "user", "usage": "all" } ],
         "CoefficientSource": [ { "value": "COE_File", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "DataCoefficientType": [ { "value": "Real", "resolve_type": "user", "usage": "all" } ],
@@ -41,7 +41,7 @@
         "Data_Width": [ { "value": "32", "value_src": "user", "value_permission": "bd_and_user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Data_Fractional_Bits": [ { "value": "30", "value_src": "user", "value_permission": "bd_and_user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Output_Rounding_Mode": [ { "value": "Truncate_LSBs", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
-        "Output_Width": [ { "value": "16", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "Output_Width": [ { "value": "18", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Filter_Architecture": [ { "value": "Systolic_Multiply_Accumulate", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "Optimization_Goal": [ { "value": "Area", "resolve_type": "user", "usage": "all" } ],
         "Optimization_Selection": [ { "value": "None", "resolve_type": "user", "usage": "all" } ],
@@ -95,8 +95,8 @@
       "model_parameters": {
         "C_XDEVICEFAMILY": [ { "value": "zynq", "resolve_type": "generated", "usage": "all" } ],
         "C_ELABORATION_DIR": [ { "value": "./", "resolve_type": "generated", "usage": "all" } ],
-        "C_COMPONENT_NAME": [ { "value": "radio_bd_real_filter_2_0", "resolve_type": "generated", "usage": "all" } ],
-        "C_COEF_FILE": [ { "value": "radio_bd_real_filter_2_0.mif", "resolve_type": "generated", "usage": "all" } ],
+        "C_COMPONENT_NAME": [ { "value": "radio_bd_real_filter_2_1", "resolve_type": "generated", "usage": "all" } ],
+        "C_COEF_FILE": [ { "value": "radio_bd_real_filter_2_1.mif", "resolve_type": "generated", "usage": "all" } ],
         "C_COEF_FILE_LINES": [ { "value": "384", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DATA_COEFFICIENT_TYPE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_FILTER_TYPE": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -127,8 +127,8 @@
         "C_DATA_PATH_SIGN": [ { "value": "1,0", "resolve_type": "generated", "usage": "all" } ],
         "C_COEF_PATH_SIGN": [ { "value": "0,0", "resolve_type": "generated", "usage": "all" } ],
         "C_ACCUM_PATH_WIDTHS": [ { "value": "33,32", "resolve_type": "generated", "usage": "all" } ],
-        "C_OUTPUT_WIDTH": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_OUTPUT_PATH_WIDTHS": [ { "value": "16", "resolve_type": "generated", "usage": "all" } ],
+        "C_OUTPUT_WIDTH": [ { "value": "18", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_OUTPUT_PATH_WIDTHS": [ { "value": "18", "resolve_type": "generated", "usage": "all" } ],
         "C_ACCUM_OP_PATH_WIDTHS": [ { "value": "48", "resolve_type": "generated", "usage": "all" } ],
         "C_EXT_MULT_CNFG": [ { "value": "0,1,0,16", "resolve_type": "generated", "usage": "all" } ],
         "C_DATA_PATH_PSAMP_SRC": [ { "value": "0", "resolve_type": "generated", "usage": "all" } ],
@@ -157,7 +157,7 @@
         "C_S_DATA_TUSER_WIDTH": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_M_DATA_HAS_TREADY": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_M_DATA_HAS_TUSER": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_M_DATA_TDATA_WIDTH": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_M_DATA_TDATA_WIDTH": [ { "value": "24", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_M_DATA_TUSER_WIDTH": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_HAS_CONFIG_CHANNEL": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_CONFIG_SYNC_MODE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -182,11 +182,11 @@
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
         "IPREVISION": [ { "value": "26" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../full_radio_v1_0_project.gen/sources_1/bd/radio_bd/ip/radio_bd_real_filter_2_0" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../full_radio_v1_0_project.gen/sources_1/bd/radio_bd/ip/radio_bd_real_filter_2_1_1" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../../../../../ip_repo/full_radio/src/radio_bd/ipshared" } ],
         "SWVERSION": [ { "value": "2025.2" } ],
-        "SYNTHESISFLOW": [ { "value": "OUT_OF_CONTEXT" } ]
+        "SYNTHESISFLOW": [ { "value": "GLOBAL" } ]
       }
     },
     "boundary": {
@@ -197,7 +197,7 @@
         "s_axis_data_tready": [ { "direction": "out", "driver_value": "0x1" } ],
         "s_axis_data_tdata": [ { "direction": "in", "size_left": "31", "size_right": "0", "driver_value": "0" } ],
         "m_axis_data_tvalid": [ { "direction": "out", "driver_value": "0x0" } ],
-        "m_axis_data_tdata": [ { "direction": "out", "size_left": "15", "size_right": "0", "driver_value": "0" } ]
+        "m_axis_data_tdata": [ { "direction": "out", "size_left": "23", "size_right": "0", "driver_value": "0" } ]
       },
       "interfaces": {
         "event_s_data_tlast_missing_intf": {
@@ -307,7 +307,7 @@
           "abstraction_type": "xilinx.com:interface:axis_rtl:1.0",
           "mode": "slave",
           "parameters": {
-            "TDATA_NUM_BYTES": [ { "value": "4", "value_src": "auto", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "TDATA_NUM_BYTES": [ { "value": "4", "value_src": "auto_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TDEST_WIDTH": [ { "value": "0", "value_src": "constant", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TID_WIDTH": [ { "value": "0", "value_src": "constant", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TUSER_WIDTH": [ { "value": "0", "value_src": "auto_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
@@ -338,7 +338,7 @@
           "abstraction_type": "xilinx.com:interface:axis_rtl:1.0",
           "mode": "master",
           "parameters": {
-            "TDATA_NUM_BYTES": [ { "value": "2", "value_src": "auto", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "TDATA_NUM_BYTES": [ { "value": "3", "value_src": "auto", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TDEST_WIDTH": [ { "value": "0", "value_src": "constant", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TID_WIDTH": [ { "value": "0", "value_src": "constant", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TUSER_WIDTH": [ { "value": "0", "value_src": "auto", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
@@ -350,8 +350,8 @@
             "PHASE": [ { "value": "0.0", "value_permission": "bd", "resolve_type": "generated", "format": "float", "is_ips_inferred": true, "is_static_object": false } ],
             "CLK_DOMAIN": [ { "value": "radio_bd_aclk_0", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
             "LAYERED_METADATA": [ { "value": [
-                "xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 16} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type",
-                " {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format long minimum {} maximum {}} value 16} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 13} signed {attribs {resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}} TDATA_WIDTH 16 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} v",
+                "xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 18} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 18} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type",
+                " {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format long minimum {} maximum {}} value 24} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 18} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 15} signed {attribs {resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}} TDATA_WIDTH 24 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} v",
                 "alue {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} m",
                 "aximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format lo",
                 "ng minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}"
@@ -366,5 +366,5 @@
       }
     }
   },
-  "checksum": "7f2798ff"
+  "checksum": "1514ea2a"
 }

@@ -1,14 +1,14 @@
 {
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
-    "xci_name": "radio_bd_cmpy_0_0",
+    "xci_name": "radio_bd_cmpy_0_1",
     "cell_name": "cmpy_0",
     "component_reference": "xilinx.com:ip:cmpy:6.0",
     "ip_revision": "27",
-    "gen_directory": "../../../../../../full_radio_v1_0_project.gen/sources_1/bd/radio_bd/ip/radio_bd_cmpy_0_0",
+    "gen_directory": "../../../../../../full_radio_v1_0_project.gen/sources_1/bd/radio_bd/ip/radio_bd_cmpy_0_1_1",
     "parameters": {
       "component_parameters": {
-        "Component_Name": [ { "value": "radio_bd_cmpy_0_0", "resolve_type": "user", "usage": "all" } ],
+        "Component_Name": [ { "value": "radio_bd_cmpy_0_1", "resolve_type": "user", "usage": "all" } ],
         "DataType": [ { "value": "Integer", "value_src": "propagated", "resolve_type": "user", "usage": "all" } ],
         "HasAccumulator": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "APortWidth": [ { "value": "16", "value_src": "propagated", "value_permission": "bd_and_user", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -23,7 +23,7 @@
         "OptimizeGoal": [ { "value": "Resources", "resolve_type": "user", "usage": "all" } ],
         "FlowControl": [ { "value": "NonBlocking", "resolve_type": "user", "usage": "all" } ],
         "RoundMode": [ { "value": "Truncate", "resolve_type": "user", "usage": "all" } ],
-        "OutputWidth": [ { "value": "16", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "OutputWidth": [ { "value": "19", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "HasCTRLTLAST": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "HasCTRLTUSER": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "CTRLTUSERWidth": [ { "value": "1", "value_permission": "bd_and_user", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -40,7 +40,7 @@
         "C_DATA_TYPE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_A_WIDTH": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_B_WIDTH": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_OUT_WIDTH": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_OUT_WIDTH": [ { "value": "19", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_LATENCY": [ { "value": "6", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_MULT_TYPE": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_OPTIMIZE_GOAL": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -65,7 +65,7 @@
         "C_S_AXIS_B_TUSER_WIDTH": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_S_AXIS_CTRL_TDATA_WIDTH": [ { "value": "8", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_S_AXIS_CTRL_TUSER_WIDTH": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_M_AXIS_DOUT_TDATA_WIDTH": [ { "value": "32", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_M_AXIS_DOUT_TDATA_WIDTH": [ { "value": "48", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_M_AXIS_DOUT_TUSER_WIDTH": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
@@ -85,11 +85,11 @@
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
         "IPREVISION": [ { "value": "27" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../full_radio_v1_0_project.gen/sources_1/bd/radio_bd/ip/radio_bd_cmpy_0_0" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../full_radio_v1_0_project.gen/sources_1/bd/radio_bd/ip/radio_bd_cmpy_0_1_1" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../../../../../ip_repo/full_radio/src/radio_bd/ipshared" } ],
         "SWVERSION": [ { "value": "2025.2" } ],
-        "SYNTHESISFLOW": [ { "value": "OUT_OF_CONTEXT" } ]
+        "SYNTHESISFLOW": [ { "value": "GLOBAL" } ]
       }
     },
     "boundary": {
@@ -100,7 +100,7 @@
         "s_axis_b_tvalid": [ { "direction": "in", "driver_value": "0x0" } ],
         "s_axis_b_tdata": [ { "direction": "in", "size_left": "31", "size_right": "0", "driver_value": "0" } ],
         "m_axis_dout_tvalid": [ { "direction": "out", "driver_value": "0x0" } ],
-        "m_axis_dout_tdata": [ { "direction": "out", "size_left": "31", "size_right": "0", "driver_value": "0" } ]
+        "m_axis_dout_tdata": [ { "direction": "out", "size_left": "47", "size_right": "0", "driver_value": "0" } ]
       },
       "interfaces": {
         "M_AXIS_DOUT": {
@@ -108,7 +108,7 @@
           "abstraction_type": "xilinx.com:interface:axis_rtl:1.0",
           "mode": "master",
           "parameters": {
-            "TDATA_NUM_BYTES": [ { "value": "4", "value_src": "auto", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "TDATA_NUM_BYTES": [ { "value": "6", "value_src": "auto", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TDEST_WIDTH": [ { "value": "0", "value_src": "constant", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TID_WIDTH": [ { "value": "0", "value_src": "constant", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TUSER_WIDTH": [ { "value": "0", "value_src": "auto", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
@@ -120,7 +120,7 @@
             "PHASE": [ { "value": "0.0", "value_permission": "bd", "resolve_type": "generated", "format": "float", "is_ips_inferred": true, "is_static_object": false } ],
             "CLK_DOMAIN": [ { "value": "radio_bd_aclk_0", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
             "LAYERED_METADATA": [ { "value": [
-                "xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} complex {bitwidth {attribs {resolve_type generated dependency set_width format long minimum {} maximum {}} value 16} stride {attribs {resolve_type generated dependency set_stride format long minimum {} maximum {}} value 16} real {fixed {fractwidth {attribs {resolve_type generated dependency set_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}} realfirst {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}} TDATA_WIDTH 32 TUSER {datatype {name {attribs {resolve_type immediate dependency {} ",
+                "xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 43} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} complex {bitwidth {attribs {resolve_type generated dependency set_width format long minimum {} maximum {}} value 19} stride {attribs {resolve_type generated dependency set_stride format long minimum {} maximum {}} value 24} real {fixed {fractwidth {attribs {resolve_type generated dependency set_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}} realfirst {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}} TDATA_WIDTH 48 TUSER {datatype {name {attribs {resolve_type immediate dependency {} ",
                 "format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_a_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value a_tuser} enabled {attribs {resolve_type generated dependency a_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency a_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} field_b_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value b_tuser} enabled {attribs {resolve_type generated dependency b_enabled format bool mini",
                 "mum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency b_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency b_offset format long minimum {} maximum {}} value 0}}} field_ctrl_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value ctrl_tuser} enabled {attribs {resolve_type generated dependency ctrl_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency ctrl_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency ctrl_offset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}"
                 ], "value_src": "propagated", "value_permission": "bd", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
@@ -224,5 +224,5 @@
       }
     }
   },
-  "checksum": "dbcceead"
+  "checksum": "bc7ffddf"
 }
