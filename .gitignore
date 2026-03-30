@@ -1,0 +1,17 @@
+# temp files
+*.jou
+*.log
+.Xil/
+*.str
+# compilation output files
+*.gen/
+*.mif
+*.bin
+# project file
+vivado/
+# top level .tcl
+*.tcl
+*.zip
+
+
+
