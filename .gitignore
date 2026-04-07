@@ -3,6 +3,7 @@
 *.log
 .Xil/
 *.str
+*.txt
 # compilation output files
 *.gen/
 *.mif
