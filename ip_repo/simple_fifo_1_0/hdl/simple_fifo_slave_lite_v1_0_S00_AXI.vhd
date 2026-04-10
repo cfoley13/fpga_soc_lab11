@@ -120,21 +120,23 @@ architecture arch_imp of simple_fifo_slave_lite_v1_0_S00_AXI is
 	signal slv_reg3	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);
 	signal byte_index	: integer;
 
-	 signal mem_logic  : std_logic_vector(ADDR_LSB + OPT_MEM_ADDR_BITS downto ADDR_LSB);
+	signal mem_logic  : std_logic_vector(ADDR_LSB + OPT_MEM_ADDR_BITS downto ADDR_LSB);
 
-	 --State machine local parameters
+	--State machine local parameters
 	constant Idle : std_logic_vector(1 downto 0) := "00";
 	constant Raddr: std_logic_vector(1 downto 0) := "10";
 	constant Rdata: std_logic_vector(1 downto 0) := "11";
 	constant Waddr: std_logic_vector(1 downto 0) := "10";
 	constant Wdata: std_logic_vector(1 downto 0) := "11";
-	 --State machine variables
+	--State machine variables
 	signal state_read : std_logic_vector(1 downto 0);
 	signal state_write: std_logic_vector(1 downto 0);
 	-- my contributions
 	signal fifo_dout : std_logic_vector(31 downto 0);
 	signal fifo_empty : std_logic;
 	signal slv_reg_rden : std_logic; -- read enable
+	signal rst_sync_reg : std_logic_vector(1 downto 0) := "11"; -- start in reset state
+	signal safe_fifo_rst : std_logic;
 begin
 	-- This signal goes high when the master is validly requesting a read
     slv_reg_rden <= axi_arready and S_AXI_ARVALID and (not axi_rvalid);
@@ -147,7 +149,17 @@ begin
 	S_AXI_ARREADY	<= axi_arready;
 	S_AXI_RRESP	<= axi_rresp;
 	S_AXI_RVALID	<= axi_rvalid;
-	    mem_logic     <= S_AXI_AWADDR(ADDR_LSB + OPT_MEM_ADDR_BITS downto ADDR_LSB) when (S_AXI_AWVALID = '1') else axi_awaddr(ADDR_LSB + OPT_MEM_ADDR_BITS downto ADDR_LSB);
+	mem_logic     <= S_AXI_AWADDR(ADDR_LSB + OPT_MEM_ADDR_BITS downto ADDR_LSB) when (S_AXI_AWVALID = '1') else axi_awaddr(ADDR_LSB + OPT_MEM_ADDR_BITS downto ADDR_LSB);
+
+	-- syncronizer for fifo reset
+	process(fifo_wclk)
+	begin
+		if rising_edge(fifo_wclk) then
+			rst_sync_reg <= rst_sync_reg(0) & ((not S_AXI_ARESETN) or slv_reg2(0));
+		end if;
+	end process;
+
+	safe_fifo_rst <= rst_sync_reg(1);
 
 	-- Implement Write state machine
 	-- Outstanding write transactions are not supported by the slave i.e., master should assert bready to receive response on or before it starts sending the new transaction
@@ -229,24 +241,6 @@ begin
 	    else
 	      if (S_AXI_WVALID = '1') then
 	          case (mem_logic) is
-			  -- commenting out, its now driven by fifo dout
-	        --   when b"00" =>
-	        --     for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
-	        --       if ( S_AXI_WSTRB(byte_index) = '1' ) then
-	        --         -- Respective byte enables are asserted as per write strobes                   
-	        --         -- slave registor 0
-	        --         slv_reg0(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
-	        --       end if;
-	        --     end loop;
-				-- commenting out, now driven by fifo status
-	        --   when b"01" =>
-	        --     for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
-	        --       if ( S_AXI_WSTRB(byte_index) = '1' ) then
-	        --         -- Respective byte enables are asserted as per write strobes                   
-	        --         -- slave registor 1
-	        --         slv_reg1(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
-	        --       end if;
-	        --     end loop;
 	          when b"10" =>
 	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
 	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
@@ -264,7 +258,7 @@ begin
 	              end if;
 	            end loop;
 	          when others =>
-			  -- disabling
+			  -- disabling read only read only registers
 	            -- slv_reg0 <= slv_reg0;
 	            -- slv_reg1 <= slv_reg1;
 	            slv_reg2 <= slv_reg2;
@@ -367,7 +361,7 @@ begin
         empty  => fifo_empty,
 
         -- Reset
-        rst    => not S_AXI_ARESETN,  -- Convert Active-Low to Active-High
+        rst    => safe_fifo_rst,  -- fifo is active high reset so 0 is run state
 
 		-- optional
 		sleep         => '0',
