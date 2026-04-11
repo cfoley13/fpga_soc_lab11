@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
     packet.seq_num = 0;
     
     printf("Sending %s packets to %s:%d...\n", (mode == 'r' ? "REAL" : "FAKE"), dest_ip, dest_port);
-    if(pack_type == 'r'){ // send real packets
+    if(mode == 'r'){ // send real packets
         while (1) {
             // Collect 256 samples
             for (int i = 0; i < SAMPLES_PER_PKT; i++) {
@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
             packet.seq_num++;
         }
     }
-    if(pack_type == 'f') // send fake packets
+    if(mode == 'f') // send fake packets
         while (1) {
             // Collect 256 samples
             for (int i = 0; i < SAMPLES_PER_PKT; i++) {
