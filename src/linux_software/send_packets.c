@@ -90,13 +90,13 @@ int main(int argc, char *argv[]) {
             packet.seq_num++;
         }
     }
-    if(mode == 'f') // send fake packets
+    if(mode == 'f'){ // send fake packets
+	uint16_t imag = 0xABCD;
+	uint16_t real = 0xEF01;
         while (1) {
             // Collect 256 samples
             for (int i = 0; i < SAMPLES_PER_PKT; i++) {
                 // Wait for FIFO to have data (Status Reg: 1 is empty, 0 is not empty)
-                uint16_t imag = 0xABCD;
-                uint16_t real = 0xEF01;
                 // Little Endian IQ packing
                 packet.samples[i*2]     = imag; // I
                 packet.samples[i*2 + 1] = real; // Q
@@ -113,7 +113,7 @@ int main(int argc, char *argv[]) {
             packet.seq_num++;
             usleep(5243); // to keep ~48.828khz pace
         }
-
+    }
     // Cleanup
     munmap(fifo_ptr, MAP_SIZE);
     close(mem_fd);
