@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- NOTE: I have updated the html here with the help of and LLM. I have gathered a layman's
+Understanding of html and can explain all html used in this file. -->
+<HTML>
+    <TITLE>Zybo Z7 Radio</TITLE>
+    <BODY BGCOLOR="lightblue">
+        <H1>Zybo Z7 Radio Page</H1>
+        <div class="config-section">
+            <a href="./cgi-bin/setup_all.sh"><strong>[ Initialize PL / Radio Hardware ]</strong></a>
+            <p>Initializes the bitfile, configures the codec, and prepares the system.</p>
+        </div>
+        <H2>Radio Tuning</H2>
+        <form action = "/cgi-bin/configure_radio.py" method = "post">
+            Destination IP: <input type="text" name="ip_addr" value="10.0.0.54"><br />
+            UDP Port: <input type="number" name="udp_port" value="25344"><br />
+            <p>
+                <strong>Data Mode:</strong><br>
+                <input type="radio" id="real" name="mode" value="r" checked>
+                <label for="real">Real (Hardware)</label><br>
+                <input type="radio" id="fake" name="mode" value="f">
+                <label for="fake">Fake (Ramp)</label>
+            </p>
+            <strong>Frequency Settings:</strong>
+            Fake ADC Frequency (Hz): <input type = "number" name = "adc_freq_hz"><br />
+            Radio Tune Center Frequency (Hz): <input type = "number" name = "tune_freq_hz" />
+            <p>
+                <input type="checkbox" id="streaming" name="streaming" value="streaming">
+                <label for="streaming"> Enable UDP Streaming</label><br> 
+            </p>
+            <!-- <input type = "submit" value = "Submit" /> -->
+            <input type="submit" value="Apply Changes & Update Streamer" style="padding: 10px 20px; cursor: pointer;">
+        </form>
+        <H2>Milestones / Demonstrations</H2>
+        <a href="./cgi-bin/test_radio">Run Lab 10 test_radio</a><br>
+        <a href="./cgi-bin/run_milestone">Run Milestone</a>  
+    </BODY>
+</HTML>
+    
