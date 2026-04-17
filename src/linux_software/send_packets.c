@@ -71,7 +71,7 @@ int main(int argc, char *argv[]) {
             for (int i = 0; i < SAMPLES_PER_PKT; i++) {
                 // Wait for FIFO to have data (Status Reg: 1 is empty, 0 is not empty)
                 while (fifo_ptr[REG_STATUS] & 0x1) {
-                    usleep(1);
+                    // usleep(1);
                     // Busy wait or usleep(1) to save CPU
                 }
                 // Read 32-bit sample from FIFO (High 16 bits = Q, Low 16 bits = I)

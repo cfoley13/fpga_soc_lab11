@@ -4,10 +4,9 @@ echo "" # An empty line. Mandatory, if it is missed the page content will not lo
 echo "<p><em>"
 echo "loading PL...<br>"
 fpgautil -b lab11.bit.bin
+echo "done...<br>"
 echo "</p></em><p>"
 echo "configuring Codec...<br>"
 ./configure_codec.sh
 echo "</p>"
-echo "you would start your UDP Streamer Program Here...<br>"
-./udp_pack.exe
 echo "<p><em>All Done!</em></p>" 
