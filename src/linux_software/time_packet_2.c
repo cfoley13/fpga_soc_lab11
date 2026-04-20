@@ -9,15 +9,24 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#define FIFO_BASE_ADDR 0x43C10000
-#define REG_DATA       0   
-#define REG_STATUS     1   
-#define REG_TIMER      0x43C0000C  
-#define MAP_SIZE       4096
+// Define the Physical Base Addresses
+#define RADIO_BASE_ADDR 0x43C00000
+#define FIFO_BASE_ADDR  0x43C10000
+
+// Define the Offsets (Divide the byte offset by 4 for uint32_t indexing)
+#define REG_ADC    0    // 0x00 / 4
+#define REG_TUNER  1    // 0x04
+#define REG_RESET  2    // 0x08
+#define REG_TIMER  3    // 0x0C / 4
+
+#define REG_DATA   0    // 0x00 / 4
+#define REG_STAT   1    // 0x04 / 4
+#define REG_FRST   2    // 0x08 / 4
 
 #define SAMPLES_PER_PKT 256
 #define DATA_BYTES      1024 
 #define PKT_SIZE        (4 + DATA_BYTES) 
+#define MAP_SIZE        4096
 
 typedef struct {
     uint32_t seq_num;
@@ -34,8 +43,13 @@ int main(int argc, char *argv[]) {
     int dest_port = atoi(argv[2]);
 
     int mem_fd = open("/dev/mem", O_RDWR | O_SYNC);
+    // 1. Map the Radio Control block
+    uint32_t *radio_ptr = mmap(NULL, MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, mem_fd, RADIO_BASE_ADDR);
+
+    // 2. Map the FIFO block
     uint32_t *fifo_ptr = mmap(NULL, MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, mem_fd, FIFO_BASE_ADDR);
 
+    // udp sock
     int sock = socket(AF_INET, SOCK_DGRAM, 0);
     struct sockaddr_in servaddr;
     memset(&servaddr, 0, sizeof(servaddr));
@@ -46,7 +60,7 @@ int main(int argc, char *argv[]) {
     radio_packet_t packet;
     packet.seq_num = 0;
     
-    uint32_t start_cycles = fifo_ptr[REG_TIMER];
+    uint32_t start_cycles = radio_ptr[REG_TIMER];
     uint32_t one_sec_cycles = 125000000; 
     uint32_t current_elapsed = 0;
 
@@ -56,7 +70,7 @@ int main(int argc, char *argv[]) {
     while (current_elapsed < one_sec_cycles && packet.seq_num < 200) {
         
         // 1. Update Hardware Timer
-        uint32_t now = fifo_ptr[REG_TIMER];
+        uint32_t now = radio_ptr[REG_TIMER];
         if (now >= start_cycles) {
             current_elapsed = now - start_cycles;
         } else {
@@ -66,7 +80,13 @@ int main(int argc, char *argv[]) {
         // 2. Collect 1 packet (256 samples)
         for (int i = 0; i < SAMPLES_PER_PKT; i++) {
             // If the hardware stalls, you can still Ctrl+C this
-            while (fifo_ptr[REG_STATUS] & 0x1); 
+            int j = 0;
+            while (fifo_ptr[REG_STAT] & 0x1){
+                j++;
+            }; 
+            if (j > 0){
+                printf("for packet %d, i had to wait %d times\n", packet.seq_num, j);
+            }
             
             uint32_t raw_data = fifo_ptr[REG_DATA];
             packet.samples[i*2]     = (int16_t)(raw_data & 0xFFFF);

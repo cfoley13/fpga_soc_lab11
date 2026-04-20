@@ -4,15 +4,17 @@
 .Xil/
 *.str
 *.txt
+src/*.asv
 # compilation output files
 *.gen/
 *.mif
 *.bin
+# ila output data
+*.csv
 # project file
 vivado/
 # top level .tcl
 *.tcl
 *.zip
-
-
+src/linux_software/*.tgz
 

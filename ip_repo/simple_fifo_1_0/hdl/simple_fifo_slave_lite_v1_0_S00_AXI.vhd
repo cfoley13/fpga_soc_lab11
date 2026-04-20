@@ -139,7 +139,11 @@ architecture arch_imp of simple_fifo_slave_lite_v1_0_S00_AXI is
 	signal safe_fifo_rst : std_logic;
 begin
 	-- This signal goes high when the master is validly requesting a read
-    slv_reg_rden <= axi_arready and S_AXI_ARVALID and (not axi_rvalid);
+    -- slv_reg_rden <= axi_arready and S_AXI_ARVALID and (not axi_rvalid);
+	-- Only pop the FIFO if the address matches REG_DATA (binary "00")
+	slv_reg_rden <= axi_arready and S_AXI_ARVALID and (not axi_rvalid) 
+					when (axi_araddr(ADDR_LSB+OPT_MEM_ADDR_BITS downto ADDR_LSB) = "00") 
+					else '0';
 	-- I/O Connections assignments
 
 	S_AXI_AWREADY	<= axi_awready;
