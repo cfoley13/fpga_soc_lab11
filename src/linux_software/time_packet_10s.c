@@ -64,10 +64,10 @@ int main(int argc, char *argv[]) {
     uint32_t one_sec_cycles = 125000000; 
     uint32_t current_elapsed = 0;
 
-    printf("Starting Safety Test: 1s duration OR 200 packet limit...\n");
+    printf("Starting Safety Test: 10s duration OR 2000 packet limit...\n");
 
     // The safety loop: checks BOTH time and packet count
-    while (current_elapsed < one_sec_cycles && packet.seq_num < 200) {
+    while (current_elapsed < (one_sec_cycles*10) && (packet.seq_num < 200*10)) {
         
         // 1. Update Hardware Timer
         uint32_t now = radio_ptr[REG_TIMER];
@@ -85,7 +85,7 @@ int main(int argc, char *argv[]) {
                 j++;
             }; 
             if (j > 0){
-                printf("for packet %d, i had to wait %d times\n", packet.seq_num, j);
+               // printf("for packet %d, i had to wait %d times\n", packet.seq_num, j);
             }
             
             uint32_t raw_data = fifo_ptr[REG_DATA];
@@ -102,7 +102,7 @@ int main(int argc, char *argv[]) {
     double actual_fs = (double)(packet.seq_num * 256) / actual_time;
 
     printf("\n--- Safety Test Results ---\n");
-    printf("Exit Reason: %s\n", (packet.seq_num >= 200) ? "Packet Limit Hit" : "Time Limit Hit");
+    printf("Exit Reason: %s\n", (packet.seq_num >= 2000) ? "Packet Limit Hit" : "Time Limit Hit");
     printf("Packets Sent: %u\n", packet.seq_num);
     printf("Hardware Time: %.4f seconds\n", actual_time);
     printf("Calculated Sample Rate: %.2f Hz\n", actual_fs);
