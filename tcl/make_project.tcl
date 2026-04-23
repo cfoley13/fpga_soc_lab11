@@ -14,7 +14,7 @@ update_ip_catalog
  
 # make block design
 
-source ./tcl/design_1.tcl 
+source ./tcl/lab11.tcl 
 
 close_project
 
