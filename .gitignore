@@ -14,7 +14,7 @@ src/*.asv
 # project file
 vivado/
 # top level .tcl
-*.tcl
+# *.tcl
 *.zip
 src/linux_software/*.tgz
 
